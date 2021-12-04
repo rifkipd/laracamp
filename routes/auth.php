@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Expr\FuncCall;
+use App\Http\Controllers\UserController;
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
     ->middleware('guest')
@@ -18,9 +19,9 @@ Route::get('/register', [RegisteredUserController::class, 'create'])
 Route::post('/register', [RegisteredUserController::class, 'store'])
     ->middleware('guest');
 
-Route::get('/login', function () {
-    return view('login');
-})->middleware('guest')->name('login');
+Route::get('/login', [UserController::class, 'login'])->middleware('guest')->name('login');
+
+
 
 
 Route::get('/login/admin', [AuthenticatedSessionController::class, 'create'])
