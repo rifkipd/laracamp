@@ -7,7 +7,7 @@ use App\Models\camps;
 use App\Models\Checkout;
 use Illuminate\Http\Request;
 use App\Http\Requests\User\Checkout\Store;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
