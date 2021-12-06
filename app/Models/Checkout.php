@@ -11,12 +11,19 @@ class Checkout extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['user_id', 'camp_id', 'card_number', 'expired', 'cvc', 'is_paid'];
+    protected $fillable = [
+        'user_id', 'camp_id', 'card_number', 'expired', 'cvc', 'is_paid'
+    ];
 
-    public function setExpiredAttributes($value)
-    {
-        $this->attributes['expired'] = date('Y-m', strtotime($value));
-    }
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'expired' => 'datetime',
+    ];
+
 
     /**
      * Get the user that owns the Checkout
@@ -26,5 +33,15 @@ class Checkout extends Model
     public function Camp(): BelongsTo
     {
         return $this->belongsTo(camps::class);
+    }
+
+    /**
+     * Get the user that owns the Checkout
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function User(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }
