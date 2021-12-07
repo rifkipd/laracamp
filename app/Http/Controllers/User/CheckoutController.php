@@ -34,7 +34,7 @@ class CheckoutController extends Controller
         //validation landing page untuk menampilkan error jika sudah melakukan checkout pada course
         if ($camp->isRegistered) {
             $request->session()->flash('error', "You Already registered on {$camp->title} camp.");
-            return redirect(route('dashboard'));
+            return redirect(route('user.dashboard'));
         }
 
 

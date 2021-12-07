@@ -49,9 +49,11 @@
                         </td>
                     </tr>
                     @empty
-                        <td colspan="5">
-                            <h3>No Data</h3>
-                        </td>
+                       <tr>
+                            <td colspan="5">
+                                <h3>No Data</h3>
+                            </td>
+                       </tr>
                         
                     @endforelse
                     
